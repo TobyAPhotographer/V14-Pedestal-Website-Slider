@@ -1,311 +1,370 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
-</head>
-<body>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>BASIC RESET &amp; SETUP</p>
-<p class="p1">======================================== */</p>
-<p class="p1">* {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-sizing: border-box;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">body {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>LAYOUT &amp; DIMENSIONS</p>
-<p class="p1">======================================== */</p>
-<p class="p1">.carousel-container {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Container Size */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>max-width: 900px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 400px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin: 0 auto;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Layout */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>overflow: visible;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-track {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>overflow: visible;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-slide {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Slide Dimensions */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 280px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 320px;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Visual Style */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>cursor: grab;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>user-select: none;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Default Animation */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-slide:active {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>cursor: grabbing;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-slide img {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>object-fit: cover;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 20px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>COLORS &amp; SHADOWS</p>
-<p class="p1">======================================== */</p>
-<p class="p1">.carousel-slide {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Default Shadow */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-slide.center {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Center Slide Enhanced Shadow */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-nav {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Arrow Button Colors */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255, 255, 255, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-nav:hover {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.indicator {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Pagination Dot Colors */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255, 255, 255, 0.5);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.indicator.active {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background: white;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>SLIDE POSITIONS</p>
-<p class="p1">======================================== */</p>
-<p class="p1">/* Center slide - main focus */</p>
-<p class="p1">.carousel-slide.center {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(0) scale(1);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index: 3;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* Left slide - previous */</p>
-<p class="p1">.carousel-slide.left {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(-200px) scale(0.85);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index: 1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0.7;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* Right slide - next */</p>
-<p class="p1">.carousel-slide.right {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(200px) scale(0.85);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index: 1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0.7;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* Hidden slides */</p>
-<p class="p1">.carousel-slide.hidden {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(0) scale(0.6);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index: 0;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>HOVER ZOOM EFFECT</p>
-<p class="p1">======================================== */</p>
-<p class="p1">.carousel-container[data-hover-zoom="true"] .carousel-slide.center:hover {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(0) scale(1.05);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>ANIMATION PRESETS</p>
-<p class="p1">======================================== */</p>
-<p class="p1">/* Bouncy Animation */</p>
-<p class="p1">.carousel-container[data-animation="bounce"] .carousel-slide {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* Elastic Animation */</p>
-<p class="p1">.carousel-container[data-animation="elastic"] .carousel-slide {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* Smooth Animation */</p>
-<p class="p1">.carousel-container[data-animation="smooth"] .carousel-slide {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* Slow Animation */</p>
-<p class="p1">.carousel-container[data-animation="slow"] .carousel-slide {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>NAVIGATION ARROWS</p>
-<p class="p1">======================================== */</p>
-<p class="p1">.carousel-nav {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Arrow Position &amp; Size */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>top: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateY(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 50px;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Arrow Style */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index: 4;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Arrow Layout */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Arrow Animation */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: all 0.3s ease;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-nav:hover {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateY(-50%) scale(1.1);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-nav.prev {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>left: 20px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.carousel-nav.next {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>right: 20px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* Custom Arrow Images */</p>
-<p class="p1">.carousel-nav img {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>object-fit: cover;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>PAGINATION INDICATORS</p>
-<p class="p1">======================================== */</p>
-<p class="p1">.carousel-indicators {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Indicator Position */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>bottom: -60px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>left: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index: 4;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Indicator Layout */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>gap: 10px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.indicator {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Indicator Size &amp; Style */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Indicator Animation */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: all 0.3s ease;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.indicator.active {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: scale(1.2);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* ========================================</p>
-<p class="p1"><span class="Apple-converted-space">   </span>RESPONSIVE DESIGN</p>
-<p class="p1">======================================== */</p>
-<p class="p1">@media (max-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-container {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>height: 300px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>max-width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-slide {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: 200px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>height: 240px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-slide.left {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>transform: translateX(-120px) scale(0.8);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-slide.right {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>transform: translateX(120px) scale(0.8);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-nav {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>height: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font-size: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-nav.prev {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>left: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-nav.next {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>right: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">@media (max-width: 480px) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-slide {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: 160px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>height: 200px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-slide.left {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>transform: translateX(-90px) scale(0.75);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.carousel-slide.right {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>transform: translateX(90px) scale(0.75);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1">}</p>
-</body>
-</html>
+/* Pedestal Slider Extension for Will Myers Slider Pro */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Only style the slider components, not the page */
+
+/* Pedestal Slider Styles */
+.pedestal-slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
+    overflow: visible;
+}
+
+.pedestal-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+}
+
+.pedestal-slide {
+    position: absolute;
+    width: 280px;
+    height: 350px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.pedestal-slide.active {
+    transform: translateZ(50px) scale(1.1);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.pedestal-slide.prev {
+    transform: translateX(-200px) translateZ(-50px) rotateY(25deg) scale(0.85);
+    opacity: 0.7;
+    z-index: 5;
+}
+
+.pedestal-slide.next {
+    transform: translateX(200px) translateZ(-50px) rotateY(-25deg) scale(0.85);
+    opacity: 0.7;
+    z-index: 5;
+}
+
+.pedestal-slide.far-prev {
+    transform: translateX(-350px) translateZ(-100px) rotateY(35deg) scale(0.7);
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.pedestal-slide.far-next {
+    transform: translateX(350px) translateZ(-100px) rotateY(-35deg) scale(0.7);
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.slide-content {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-content.has-image {
+    justify-content: flex-start;
+    padding: 0;
+}
+
+.slide-content.text-only {
+    justify-content: center;
+    padding: 0;
+}
+
+.slide-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.slide-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.slide-title.large {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.slide-description {
+    color: #666;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    min-height: 0;
+}
+
+.slide-description.large {
+    font-size: 1rem;
+    -webkit-line-clamp: 10;
+}
+
+.slide-image {
+    margin-bottom: 15px;
+    text-align: center;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #f8f9fa;
+}
+
+.slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.slide-image.full-height {
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.slide-content.full-section {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-content.full-section > * {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    object-fit: cover !important;
+}
+
+.slide-content.full-section img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 20px !important;
+}
+
+.slide-content.full-section .sqs-block-content,
+.slide-content.full-section .content-wrapper,
+.slide-content.full-section .sqs-block-html {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+/* Navigation */
+.pedestal-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.nav-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* Indicators */
+.pedestal-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pedestal-slider {
+        height: 350px;
+    }
+    
+    .pedestal-slide {
+        width: 250px;
+        height: 300px;
+    }
+    
+    .slide-content {
+        padding: 0;
+    }
+    
+    .slide-content.text-only {
+        padding: 0;
+    }
+    
+    .slide-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .slide-title.large {
+        font-size: 1.3rem;
+    }
+    
+    .slide-description {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 6;
+    }
+    
+    .slide-description.large {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 8;
+    }
+    
+    .slide-image {
+        height: 80px;
+        margin-bottom: 12px;
+    }
+    
+    .slide-image.full-height {
+        height: 120px;
+    }
+    
+    .pedestal-slide.prev,
+    .pedestal-slide.next {
+        transform: translateX(-150px) translateZ(-30px) rotateY(20deg) scale(0.8);
+    }
+    
+    .pedestal-slide.far-prev,
+    .pedestal-slide.far-next {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .pedestal-slide {
+        width: 220px;
+        height: 280px;
+    }
+    
+    .slide-content {
+        padding: 0;
+    }
+    
+    .slide-content.text-only {
+        padding: 0;
+    }
+    
+    .slide-title {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .slide-title.large {
+        font-size: 1.2rem;
+    }
+    
+    .slide-description {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 5;
+    }
+    
+    .slide-description.large {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 7;
+    }
+    
+    .slide-image {
+        height: 70px;
+        margin-bottom: 10px;
+    }
+    
+    .slide-image.full-height {
+        height: 100px;
+    }
+    
+    .pedestal-slide.prev,
+    .pedestal-slide.next {
+        transform: translateX(-120px) translateZ(-20px) rotateY(15deg) scale(0.75);
+    }
+}
+
+/* Integration Styles for Squarespace */
+[data-effect="pedestal"] {
+    position: relative;
+    overflow: visible !important;
+}
+
+[data-effect="pedestal"] .pedestal-slider {
+    width: 100%;
+    margin: 0 auto;
+}
+
